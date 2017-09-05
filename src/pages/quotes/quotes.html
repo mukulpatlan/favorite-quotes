@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{quoteGroup?.category | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngFor="let quote of quoteGroup?.quotes; let i = index">
+		<ion-row>
+			<ion-col text-right>
+				<button 
+				small
+				ion-button 
+				icon-only 
+				clear 
+				(click)="openPopOver($event)">
+					<ion-icon name="share"></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+		<ion-card-header>
+			<ion-row>
+				<ion-col text-center>#{{ i + 1}}</ion-col>
+			</ion-row>
+		</ion-card-header>
+		<ion-card-content>
+			<p text-center>{{quote?.text}}</p>
+			<p class="author">{{quote?.person}}</p>
+		</ion-card-content>
+		<ion-row>
+			<ion-col text-right>
+				<button ion-button 
+				clear 
+				icon-only
+				(click)="addToFavorite(quote)"
+				*ngIf="!isFavorite(quote)">
+					<ion-icon name="heart-outline"></ion-icon>
+				</button>
+				<button ion-button 
+				clear 
+				icon-only
+				(click)="removeFromFavorite(quote)"
+				color="danger"
+				*ngIf="isFavorite(quote)">
+					<ion-icon name="heart"></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-card>
+</ion-content>

@@ -5,12 +5,26 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/TabsPage';
+import { FavouritePage } from '../pages/favourite/favourite';
+import { LibraryPage } from '../pages/library/library';
+import { QuotePage } from '../pages/quote/quote';
+import { QuotesPage } from '../pages/quotes/quotes';
+import { SettingsPage } from '../pages/settings/settings';
+import { PopoverPage } from '../components/popovercomponent';
+import { QuotesService } from '../services/quotes';
+import { SettingsService } from '../services/settings';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    TabsPage,
+    FavouritePage,
+    LibraryPage,
+    QuotePage,
+    QuotesPage,
+    SettingsPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -19,11 +33,19 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    TabsPage,
+    FavouritePage,
+    LibraryPage,
+    QuotePage,
+    QuotesPage,
+    SettingsPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    QuotesService,
+    SettingsService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
